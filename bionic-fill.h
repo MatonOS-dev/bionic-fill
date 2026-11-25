@@ -70,4 +70,11 @@ static inline char *bionic_get_current_dir_name(void) {
   }
 }
 #define get_current_dir_name bionic_get_current_dir_name
+/* Obsolete BSD names that bionic dropped; glibc still has them. */
+#ifndef index
+#define index(s, c) strchr((s), (c))
+#endif
+#ifndef rindex
+#define rindex(s, c) strrchr((s), (c))
+#endif
 #endif

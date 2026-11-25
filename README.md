@@ -23,6 +23,7 @@ guarded (`#ifndef`) and becomes a no-op.
 | `explicit_bzero` | absent in bionic | OSTree |
 | `unshare`, `setns`, `syncfs` declarations | bionic declares them only under GNU feature macros | OSTree, bubblewrap |
 | `get_current_dir_name` | GNU extension | bubblewrap |
+| `index`, `rindex` | obsolete BSD names, dropped by bionic | PipeWire RAOP sink |
 
 Used by MatonOS to build its Flatpak APEX (recipes in
 [MatonOS_apexs](https://github.com/MatonOS-dev/MatonOS_apexs)).
