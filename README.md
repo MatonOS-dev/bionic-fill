@@ -14,6 +14,10 @@ demanded it, and is listed below with the project that needed it. Nothing is
 added speculatively. If upstream or bionic gains the symbol, the item is
 guarded (`#ifndef`) and becomes a no-op.
 
+Only glibc/BSD userspace helpers that bionic lacks, reimplemented on what
+bionic already provides. Never emulate kernel features Android removed or
+blocks (SysV IPC, POSIX shm, …): those are not libc gaps and do not belong here.
+
 | Item | Why | Needed by |
 |---|---|---|
 | `values.h`: `MAXINT` | Legacy glibc limits header absent in bionic | Xwayland futex helper |
