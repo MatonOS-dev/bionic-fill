@@ -16,6 +16,7 @@ guarded (`#ifndef`) and becomes a no-op.
 
 | Item | Why | Needed by |
 |---|---|---|
+| `values.h`: `MAXINT` | Legacy glibc limits header absent in bionic | Xwayland futex helper |
 | `strdupa` | GNU extension, absent in bionic | OSTree |
 | `IFTODT` | BSD/glibc macro, absent in bionic | OSTree |
 | `strverscmp` | glibc extension | OSTree |
