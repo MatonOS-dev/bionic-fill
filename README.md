@@ -18,6 +18,12 @@ Only glibc/BSD userspace helpers that bionic lacks, reimplemented on what
 bionic already provides. Never emulate kernel features Android removed or
 blocks (SysV IPC, POSIX shm, …): those are not libc gaps and do not belong here.
 
+### Deliberately not filled
+
+| Item | Why | Instead |
+|---|---|---|
+| `pthread_cancel` | Needs a cancel check inside every libc cancellation point (~70 blocking calls) plus a race-free wake-up; only libc can do that. A signal + `pthread_exit` version kills threads mid-`malloc`/lock. | Patch the caller to stop the thread cooperatively (e.g. MatonOS PipeWire `0001-bionic-data-loop-stop.patch`). |
+
 | Item | Why | Needed by |
 |---|---|---|
 | `values.h`: `MAXINT` | Legacy glibc limits header absent in bionic | Xwayland futex helper |
