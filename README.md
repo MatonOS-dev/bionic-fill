@@ -34,8 +34,8 @@ blocks (SysV IPC, POSIX shm, …): those are not libc gaps and do not belong her
 | `explicit_bzero` | absent in bionic | OSTree |
 | `unshare`, `setns`, `syncfs` declarations | bionic declares them only under GNU feature macros | OSTree, bubblewrap |
 | `get_current_dir_name` | GNU extension | bubblewrap |
-| `pthread_setaffinity_np`, `pthread_getaffinity_np` | pthread-to-TID adapters for sched affinity, errno-style result | PipeWire |
-| `fopencookie`, `cookie_io_functions_t`, `cookie_read_function_t`, `cookie_write_function_t`, `cookie_seek_function_t`, `cookie_close_function_t` | Cookie streams via bionic funopen64 | PipeWire ALSA diagnostics |
+| `pthread_setaffinity_np`, `pthread_getaffinity_np` | pthread-to-TID adapters for sched affinity, errno-style result; only with `-D_GNU_SOURCE`, like glibc | PipeWire |
+| `fopencookie`, `cookie_io_functions_t`, `cookie_read_function_t`, `cookie_write_function_t`, `cookie_seek_function_t`, `cookie_close_function_t` | Cookie streams via bionic funopen64; only with `-D_GNU_SOURCE`, like glibc | PipeWire ALSA diagnostics |
 | `gettext`, `dgettext`, `dcgettext`, `ngettext`, `dngettext`, `dcngettext`, `bindtextdomain`, `bind_textdomain_codeset`, `textdomain` | Untranslated fallback when libintl.h is absent | PipeWire, WirePlumber |
 | `index`, `rindex` | obsolete BSD names, dropped by bionic | PipeWire RAOP sink |
 

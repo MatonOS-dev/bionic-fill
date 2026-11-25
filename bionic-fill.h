@@ -84,6 +84,9 @@ static inline char *bionic_get_current_dir_name(void) {
 #include <errno.h>
 #include <pthread.h>
 #include <stdio.h>
+/* glibc declares these GNU extensions only under _GNU_SOURCE (and bionic's
+ * cpu_set_t needs it too), so a plain configure probe must not see them. */
+#ifdef _GNU_SOURCE
 #if !defined(HAVE_PTHREAD_SETAFFINITY_NP) || !HAVE_PTHREAD_SETAFFINITY_NP
 #ifndef pthread_setaffinity_np
 static inline int bionic_pthread_setaffinity_np(pthread_t thread, size_t size,
@@ -178,6 +181,7 @@ static inline FILE *bionic_fopencookie(void *cookie, const char *mode,
 #define fopencookie bionic_fopencookie
 #endif
 #endif
+#endif /* _GNU_SOURCE */
 /* The companion wrapper defers to a real libintl.h when present. */
 #if __has_include(<libintl.h>)
 #include <libintl.h>
